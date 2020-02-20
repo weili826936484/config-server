@@ -1,0 +1,17 @@
+ip: 192.168.0.104
+server:
+  port: 9100
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: config-server
+eureka:
+  instance:
+    hostname: ${ip}
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
